@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synonym App</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="cover">
+      <h1>Synonym App</h1>
+      <form action="/" method="post" class="flex-form">
+        <input
+          type="search"
+          name="word"
+          placeholder="Enter a word to find synonym"
+        />
+        <input type="submit" value="Search" />
+      </form>
+      <!-- Display error message if error occourred -->
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      <!-- Display Synonyms -->
+      {% elif synonyms %}
+      <ul>
+        {% for synonym in synonyms %}
+        <li>{{ synonym['word'] }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </body>
+</html>
